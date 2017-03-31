@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<link rel="stylesheet" href="asset//bootstrap.min.css">
+	<script src="asset/jquery-3.1.1.js"></script>
+	<script src="asset/bootstrap.min.js"></script>
+	<style>
+		.item img{
+			height: 500px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="myCarousel" class="carousel slide">
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slilde-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slilde-to="1"></li>
+			<li data-target="#myCarousel" data-slilde-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="images/img1.jpg" alt="The first img">
+			</div>
+			<div class="item">
+				<img src="images/img2.jpg" alt="The second img">
+			</div>
+			<div class="item">
+				<img src="images/img3.jpg" alt="The third img">
+			</div>
+		</div>
+		<a class="carousel-control left" href="#myCarousel" data-slide="prev" style="font-size: 50px;">&lsaquo;</a>
+		<a class="carousel-control right" href="#myCarousel" data-slide="next" style="font-size: 50px;">&rsaquo;</a>
+	</div>
+		<script>
+			$(function(){
+				//轮播自动播放
+				$('#myCarousel').carousel({
+					interval: 1500		//间隔时间
+				});
+				//设置垂直居中
+				$('.carousel-control').css("line-height",$(".carousel-inner img").height() + 'px');
+				$(window).resize(function(event) {
+					/* Act on the event */
+					var $height = $(".carousel-inner img").eq(0).height() || 
+								  $(".carousel-inner img").eq(1).height() || 
+								  $(".carousel-inner img").eq(2).height();
+					$('.carousel-control').css("line-height",$height + 'px');
+				});
+			})
+		</script>
+</body>
+</html>
